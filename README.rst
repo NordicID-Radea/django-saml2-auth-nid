@@ -1,53 +1,22 @@
-=====================================
-Django SAML2 Authentication Made Easy
-=====================================
-
-:Author: Fang Li
-:Version: Use 1.1.4 for Django <=1.9, 2.x.x for Django >= 1.9, Latest supported django version is 2.1
-
-.. image:: https://img.shields.io/pypi/pyversions/django-saml2-auth.svg
-    :target: https://pypi.python.org/pypi/django-saml2-auth
-
-.. image:: https://img.shields.io/pypi/v/django-saml2-auth.svg
-    :target: https://pypi.python.org/pypi/django-saml2-auth
-
-.. image:: https://img.shields.io/pypi/dm/django-saml2-auth.svg
-        :target: https://pypi.python.org/pypi/django-saml2-auth
+Django SAML2 Authentication NID
+==============================
 
 This project aims to provide a dead simple way to integrate SAML2
-Authentication into your Django powered app. Try it now, and get rid of the
-complicated configuration of SAML.
+Authentication into your Django powered app.
 
-Any SAML2 based SSO(Single-Sign-On) identity provider with dynamic metadata
+Any SAML2 based SSO (Single-Sign-On) identity provider with dynamic metadata
 configuration is supported by this Django plugin, for example Okta.
 
+This project is a fork of django-saml2-auth_ by `Fang Li`_.
 
-When you raise an issue or PR
-=============================
-
-Please note this library is used in tons of production environment and plays a mission-critical role in most deployment. It supports almost all django versions since 1.1.4. We need to be extremely careful when merging any changes.
-
-So most non-security features or enhancements will be REJECTED. please fork your own version or just copy the code as you need. I want to make this module dead simple and reliable. That means when you have it properly configured, you are not likely to get into any troubles in the future.
-
-The supports to new versions of django are still welcome and I'll make best effort to make it latest django compatible.
-
-
-
-Donate
-======
-
-We accept your donations by clicking the awesome |star| instead of any physical transfer.
-
-.. |star| image:: https://img.shields.io/github/stars/fangli/django-saml2-auth.svg?style=social&label=Star&maxAge=86400
-
-
+.. _django-saml2-auth: https://github.com/fangli/django-saml2-auth
+.. _`Fang Li`: https://github.com/fangli
 
 Dependencies
 ============
 
 This plugin is compatible with Django 1.6/1.7/1.8/1.9/1.10. The `pysaml2` Python
 module is required.
-
 
 
 Install
@@ -190,11 +159,11 @@ identity provider, representing the user's identity.
 
 **TRIGGER.CREATE_USER** A method to be called upon new user creation. This
 method will be called before the new user is logged in and after the user's
-record is created. This method should accept ONE parameter of user dict.
+record is created. This method should accept TWO parameters: user model and user dict (saml parameters).
 
 **TRIGGER.BEFORE_LOGIN** A method to be called when an existing user logs in.
 This method will be called before the user is logged in and after user
-attributes are returned by the SAML2 identity provider. This method should accept ONE parameter of user dict.
+attributes are returned by the SAML2 identity provider. This method should accept TWO parameters: user model and user dict (saml parameters).
 
 **ASSERTION_URL** A URL to validate incoming SAML responses against. By default,
 django-saml2-auth will validate the SAML response's Service Provider address
